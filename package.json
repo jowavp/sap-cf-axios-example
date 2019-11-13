@@ -16,6 +16,6 @@
     "scripts": {
         "start": "node ./srv/index.js",
         "build": "mbt build --mtar=sca_example.mtar",
-        "deploy": "cf deploy mta_archives/sca_example.mtar",
+        "deploy": "cf deploy mta_archives/sca_example.mtar"
     }
 }
