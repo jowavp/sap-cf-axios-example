@@ -1,0 +1,52 @@
+ID: sap-cf-axios-example
+_schema-version: "2.1"
+description: Example sap cf axios
+version: 0.0.1
+modules:
+  - name: sca_approuter
+    type: approuter.nodejs
+    path: approuter
+    parameters:
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: sca_uaa
+      - name: sca_destination_service
+      - name: sca_api
+        group: destinations
+        properties:
+          forwardAuthToken: true
+          name: sca_api
+          strictSSL: false
+          url: '~{url}'
+  - name: sca_srv
+    type: nodejs
+    path: srv
+    parameters:
+      memory: 512M
+      disk-quota: 256M
+    provides:
+      - name: sca_api
+        properties:
+          url: ${default-url}
+    requires:
+      - name: sca_uaa
+      - name: sca_connectivity_service
+      - name: sca_destination_service
+resources:
+  - name: sca_destination_service
+    type: destination
+    parameters:
+      service-plan: lite
+      shared: true
+  - name: sca_connectivity_service
+    type: connectivity
+    parameters:
+      service-plan: lite
+      shared: true
+  - name: sca_uaa
+    type: com.sap.xs.uaa
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json

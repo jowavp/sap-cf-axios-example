@@ -1,0 +1,21 @@
+{
+    "name": "sap-cf-axios-example",
+    "description": "£Example on how to use sap-cf-axios",
+    "license": "ISC",
+    "version": "1.0.0",
+    "engines": {
+        "node": "^8.9"
+    },
+    "files": [],
+    "dependencies": {
+        "express": "^4.17.1",
+        "mailgun-js": "^0.22.0",
+        "sap-cf-axios": "latest"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "start": "node ./srv/index.js",
+        "build": "mbt build --mtar=sca_example.mtar",
+        "deploy": "cf deploy mta_archives/sca_example.mtar",
+    }
+}

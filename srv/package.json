@@ -1,0 +1,16 @@
+{
+  "name": "sap_cf_axios_example_srv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sap/logging": "^5.0.2",
+    "express": "^4.17.1",
+    "sap-cf-axios": "latest"
+  }
+}

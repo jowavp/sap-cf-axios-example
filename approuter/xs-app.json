@@ -1,0 +1,15 @@
+{
+	"welcomeFile": "/test",
+	"authenticationMethod": "route",
+	"logout": {
+		"logoutEndpoint": "/do/logout"
+	},
+	"routes": [
+	{
+		"source": "/(.*)$",
+		"target": "$1",
+		"authenticationType": "xsuaa",
+		"destination": "sca_api",
+		"csrfProtection": false
+	}]
+}
