@@ -10,7 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "@sap/logging": "^5.0.2",
+    "@sap/xsenv": "^2.1.0",
+    "@sap/xssec": "^2.2.3",
     "express": "^4.17.1",
+    "passport": "^0.4.0",
     "sap-cf-axios": "latest"
   }
 }
