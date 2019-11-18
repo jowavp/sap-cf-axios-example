@@ -24,6 +24,10 @@ const handleRequest = async (req, res) => {
     // do the dummy request
     var logger = req.loggingContext.getLogger('/Application/Destination');
 
+    var authorization = req.headers.authorization;
+    var parts = authorization.split(' ');
+    var token = parts[1];
+
     try {
         logger.info('Starting the request to DUMMY destination ...');
         const response = await dummy({
@@ -34,7 +38,7 @@ const handleRequest = async (req, res) => {
             },
             headers: {
                 "content-type": "application/json",
-                "Authorization": `Bearer ${request.user.token.accessToken}` 
+                "Authorization": `Bearer ${token}` 
             }
         });
         logger.info('Request done ...');
@@ -43,7 +47,7 @@ const handleRequest = async (req, res) => {
 
         logger.info('Request failed ...');
         logger.error(error);
-        res.reject(error);
+        res.status(400).send(error);
     }
 }
 

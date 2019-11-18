@@ -14,6 +14,6 @@
     "@sap/xssec": "^2.2.3",
     "express": "^4.17.1",
     "passport": "^0.4.0",
-    "sap-cf-axios": "latest"
+    "sap-cf-axios": "0.0.14"
   }
 }
