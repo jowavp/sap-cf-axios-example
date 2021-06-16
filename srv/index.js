@@ -1,7 +1,7 @@
 const logging = require('@sap/logging');
 const express = require('express');
 const app = express();
-const { SapCfAxios } = require('sap-cf-axios');
+const SapCfAxios = require('sap-cf-axios').default;
 
 const passport = require('passport');
 const xsenv = require('@sap/xsenv');
@@ -9,12 +9,14 @@ const JWTStrategy = require('@sap/xssec').JWTStrategy;
 
 const dummy = SapCfAxios('GW');
 const appContext = logging.createAppContext();
-const services = xsenv.getServices({ uaa:'sca_uaa' });
+const services = xsenv.getServices({ xsuaa: { tag: "xsuaa" } });
+
+console.log( `HOERA! Found UAA service credentials for client: ${services.xsuaa.clientid}` )
 
 app.use(logging.middleware({ appContext: appContext, logNetwork: true }));
 app.use(express.json());
 
-passport.use(new JWTStrategy(services.uaa));
+passport.use(new JWTStrategy(services.xsuaa));
 
 app.use(passport.initialize());
 app.use(passport.authenticate('JWT', { session: false }));
