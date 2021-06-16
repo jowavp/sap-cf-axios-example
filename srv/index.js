@@ -45,7 +45,7 @@ const handleRequest = async (req, res) => {
 
         logger.info('Request failed ...');
         logger.error(error);
-        res.reject(error);
+        res.error(error);
     }
 }
 
